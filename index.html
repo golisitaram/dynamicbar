@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="progressbar">
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <script src="node_modules/angular/angular.min.js"></script>
+    <title>Progress Bar</title>
+  </head>
+  <body ng-controller="progressBar">
+    <div class="container-fluid">
+        <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6" id="mainDiv">
+            <div class="buffer" ng-hide="EndPoint"></div>
+            <div class="col-xs-12 noPad">
+                <h3 class="inline">Dynamic Progress Bar</h3>
+                <button class="btn btn-sm btn-warning pull-right" ng-click="getDynamicData()">Get Data</button>
+            </div>
+            <div class="col-xs-12 noPad">
+                <div class="progress text-center" ng-click="selectBar(ind)" ng-class="{highLight : highLight[ind]}" id="prog_{{ind}}" ng-repeat="(ind, bar) in EndPoint.bars track by $index">
+                    <div class="progress-bar" ng-class="{'progress-bar-success': (bar <= 100),'progress-bar-danger': bar > 100}" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{bar}}%;">
+                    </div>
+                    <span class="pVal">{{ bar }}%</span>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 noPad">
+                <select class="form-control" ng-model="selectedOpt">
+                    <option ng-repeat="(ind, bar) in EndPoint.bars track by $index" value="{{ $index }}">{{ 'Progress ' + (ind + 1)}}</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <button class="btn btn-sm btn-primary actBtn col-xs-2" ng-repeat="(ind, BTN) in EndPoint.buttons track by $index" ng-click="updateBar(BTN)">{{ BTN }}</button>
+            </div>
+            <div class="col-xs-12 noPad">
+                <div class="text-center limitHolder">
+                    <label>Limit : </label> <h4 class="inline">{{ EndPoint.limit }}</h4>
+                </div>
+                <p>progress bar either by selecting option from dropdown or click on respective bar.</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/custom.js"></script>
+  </body>
+</html>

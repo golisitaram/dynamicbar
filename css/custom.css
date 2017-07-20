@@ -1,0 +1,52 @@
+.noPad{
+    padding-left: 0;
+    padding-right: 0;
+}
+.inline{
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 20px;
+}
+#mainDiv{
+    margin-top: 20px;
+    background-color: #e2e2e2;
+    border-radius: 5px;
+    padding: 30px;
+}
+.progress{
+    position: relative;
+    height: 40px;
+    cursor: pointer;
+}
+.pVal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 32px;
+}
+.actBtn{
+    margin: 0 10px;
+}
+.highLight{
+    border: 4px solid #fd5607;
+}
+.limitHolder{
+    margin: 10px 0;
+    border: 2px dashed #ccc;
+    padding-top: 10px;
+    line-height: 20px;
+}
+.buffer{
+    position: absolute;
+    background-image: url(../img/loader.gif);
+    background-size: 15%;
+    background-repeat: no-repeat;
+    background-position: 50% 45%;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+}
