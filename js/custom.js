@@ -3,7 +3,7 @@ var dpb = angular.module('progressbar',[]); //Dynamic Progress Bar - dpb
 dpb.controller('progressBar', ['$scope','$http','$timeout', function($scope,$http,$timeout){
     $scope.getDynamicData = function(){
         delete $scope.EndPoint;
-        $http.get('http://pb-api.herokuapp.com/bars')
+        $http.get('https://pb-api.herokuapp.com/bars')
              .then(function(response){
                 $scope.EndPoint = response.data;
                 $scope.selectedOpt = '0';
@@ -17,7 +17,6 @@ dpb.controller('progressBar', ['$scope','$http','$timeout', function($scope,$htt
     }
     
     $scope.$watch('selectedOpt', function(newV,oldV){
-        console.log($scope.selectedOpt);
         $scope.highLight = {};
         $scope.highLight[newV] = true;
     });
