@@ -2,13 +2,13 @@
 <html ng-app="progressbar">
   <head>
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.min.css">
     <script src="node_modules/angular/angular.min.js"></script>
     <title>Progress Bar</title>
   </head>
   <body ng-controller="progressBar">
     <div class="container-fluid">
-        <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6" id="mainDiv">
+        <div class="col-xs-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4" id="mainDiv">
             <div class="buffer" ng-hide="EndPoint"></div>
             <div class="col-xs-12 noPad">
                 <h3 class="inline">Dynamic Progress Bar</h3>
@@ -21,13 +21,15 @@
                     <span class="pVal">{{ bar }}%</span>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4 noPad">
+            <div class="col-xs-12 col-md-4 noPad">
                 <select class="form-control" ng-model="selectedOpt">
                     <option ng-repeat="(ind, bar) in EndPoint.bars track by $index" value="{{ $index }}">{{ 'Progress ' + (ind + 1)}}</option>
                 </select>
             </div>
-            <div class="col-xs-12 col-sm-8">
-                <button class="btn btn-sm btn-primary actBtn col-xs-2" ng-repeat="(ind, BTN) in EndPoint.buttons track by $index" ng-click="updateBar(BTN)">{{ BTN }}</button>
+            <div class="col-xs-12 col-md-8 noPad">
+                <div ng-class="{'col-xs-3' : EndPoint.buttons.length == 4,'col-xs-4' : EndPoint.buttons.length == 3}" ng-repeat="(ind, BTN) in EndPoint.buttons track by $index">
+                    <button class="btn btn-sm btn-primary actBtn "  ng-click="updateBar(BTN)">{{ BTN }}</button>
+                </div>
             </div>
             <div class="col-xs-12 noPad">
                 <div class="text-center limitHolder">
